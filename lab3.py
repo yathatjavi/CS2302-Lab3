@@ -40,7 +40,7 @@ def draw_btree(ax,n,x,y,delta_x,delta_y,T):
             x_values = [x-delta_x,x,x+delta_x]
             y_values = [y-delta_y,y,y-delta_y]
         
-            circle = plt.Circle((x, y), .5, color = 'white')
+            circle = plt.Circle((x, y), .5)
             ax.add_artist(circle)
         
             ax.text(x, y, str(temp.item), fontsize=10)
