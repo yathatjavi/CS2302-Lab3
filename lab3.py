@@ -51,14 +51,16 @@ def draw_btree(ax,n,x,y,delta_x,delta_y,T):
             draw_btree(ax,n-1,x_values[2],y_values[2],delta_x*.5,delta_y*.5,temp.right)
 
 def ListToTree(L,T):
+    
     #will take a sorted list and create a balanced BST
     if len(L) > 0:
         head = int(len(L)/2)
-        T.item = L[head]
+        T = bst.BST(L[head])
+        #T.item = L[head]
         #to create right sub tree
-        ListToTree(L[head+1:],T.right)
+        T.right = ListToTree(L[head+1:],T.right)
         #to create left sub tree
-        ListToTree(L[:head],T.left)
+        T.left = ListToTree(L[:head],T.left)
     return T
 
 def TreeToList(T,L):
@@ -102,7 +104,7 @@ def Question3():
     #sorted list to create a tree from
     B = [1,2,3,4,5,7,8,9,10,12,15,18]
     TempTree = None
-    TempTree =ListToTree(B,TempTree)
+    TempTree = ListToTree(B,TempTree)
     print('Question 3')
     print('The new tree from sorted list is: ' , end =' ')
     bst.InOrder(TempTree)
@@ -138,7 +140,7 @@ for a in A:
     
 Question1(T)
 Question2(T)
-#Question3()
+Question3()
 Question4(T)
 Question5(T)
 
